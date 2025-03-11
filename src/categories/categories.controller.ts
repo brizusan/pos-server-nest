@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
 import { IdValidationPipe } from '../common/pipes/id-validation/id-validation.pipe';
 import { CategoriesService } from './categories.service';
@@ -30,8 +31,10 @@ export class CategoriesController {
   async findOne(
     @Param('id', IdValidationPipe)
     id: string,
+    @Query('products')
+    products?: string,
   ) {
-    return this.categoriesService.findOne(+id);
+    return this.categoriesService.findOne(+id, products);
   }
 
   @Patch(':id')

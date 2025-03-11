@@ -8,6 +8,7 @@ import { typeOrmConfig } from './config/typeorm.config';
 import { CouponModule } from './coupon/coupon.module';
 import { ProductsModule } from './products/products.module';
 import { TransactionsModule } from './transactions/transactions.module';
+import { UploadImageModule } from './upload-image/upload-image.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { TransactionsModule } from './transactions/transactions.module';
     ProductsModule,
     TransactionsModule,
     CouponModule,
+    UploadImageModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -17,6 +17,10 @@ export class UpdateProductDto extends PartialType(CreateProductDto) {
   price: number;
 
   @IsOptional()
+  @IsString({ message: 'El campo image de producto debe ser de tipo string' })
+  image: string;
+
+  @IsOptional()
   @IsInt({
     message: 'El campo inventory  de producto debe ser de tipo integer',
   })

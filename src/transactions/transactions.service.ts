@@ -38,7 +38,6 @@ export class TransactionsService {
         const coupon = await this.couponService.validate({
           name: createTransactionDto.coupon,
         });
-        console.log(coupon);
         const discount = (coupon.discount / 100) * total;
         transaction.discount = discount;
         transaction.coupon = createTransactionDto.coupon;
@@ -76,7 +75,7 @@ export class TransactionsService {
       }
     });
 
-    return 'Venta almacenada correctamente';
+    return { message: 'Venta creada exitosamente' };
   }
 
   findAll(transactionDate?: string) {
@@ -91,7 +90,6 @@ export class TransactionsService {
       // tomar ventas del dia
       const startDay = startOfDay(date);
       const endDay = endOfDay(date);
-      console.log(startDay, endDay);
 
       options.where = {
         transactionDate: Between(startDay, endDay),

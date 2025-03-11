@@ -24,10 +24,12 @@ export class ProductsService {
       errors.push('Categoria no encontrada');
       throw new NotFoundException(errors);
     }
-    return this.productRepository.save({
+
+    await this.productRepository.save({
       ...createProductDto,
       category,
     });
+    return { message: 'Producto creado correctamente' };
   }
 
   async findAll(categoryId: number, take: number, skip: number) {
@@ -81,12 +83,12 @@ export class ProductsService {
     }
 
     await this.productRepository.save(product);
-    return 'Producto Actualizado';
+    return { message: 'Producto actualizado correctamente' };
   }
 
   async remove(id: number) {
     const product = await this.findOneProduct(id);
     await this.productRepository.remove(product);
-    return 'Producto Eliminado';
+    return { message: 'Producto eliminado correctamente' };
   }
 }
